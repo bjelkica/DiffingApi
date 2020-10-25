@@ -2,7 +2,6 @@ C:\Users\shomy\source\repos\DiffingApi\DiffingApi\bin\Debug\netcoreapp3.1\appset
 C:\Users\shomy\source\repos\DiffingApi\DiffingApi\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\shomy\source\repos\DiffingApi\DiffingApi\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\shomy\source\repos\DiffingApi\DiffingApi\bin\Debug\netcoreapp3.1\DiffingApi.exe
-C:\Users\shomy\source\repos\DiffingApi\DiffingApi\obj\Debug\netcoreapp3.1\DiffingApi.csprojAssemblyReference.cache
 C:\Users\shomy\source\repos\DiffingApi\DiffingApi\obj\Debug\netcoreapp3.1\DiffingApi.AssemblyInfoInputs.cache
 C:\Users\shomy\source\repos\DiffingApi\DiffingApi\obj\Debug\netcoreapp3.1\DiffingApi.AssemblyInfo.cs
 C:\Users\shomy\source\repos\DiffingApi\DiffingApi\obj\Debug\netcoreapp3.1\DiffingApi.RazorTargetAssemblyInfo.cache
