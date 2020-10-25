@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace DiffingApi.Models
 {
-    public class LeftData
+    public class InputData
     {
-        public int Id { get; set; }
         public string Data { get; set; }
     }
 }
