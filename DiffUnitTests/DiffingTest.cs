@@ -12,8 +12,9 @@ namespace DiffUnitTests
         public void Diffing_StringsOfDifferentSize()
         {
             // Testing data
-            string left = "AAAAAA==";
-            string right = "AAA=";
+            DiffController controller = new DiffController();
+            string left = controller.DecodeBase64String("AAAAAA==");
+            string right = controller.DecodeBase64String("AAA=");
             DiffData diff = new DiffData
             {
                 Id = 1,
@@ -29,7 +30,6 @@ namespace DiffUnitTests
             };
 
             // Actual result
-            DiffController controller = new DiffController();
             DiffResponse actual = controller.Diffing(diff);
 
             // Assert
@@ -41,8 +41,9 @@ namespace DiffUnitTests
         public void Diffing_EqualStrings()
         {
             // Testing data
-            string left = "AAAAAA==";
-            string right = "AAAAAA==";
+            DiffController controller = new DiffController();
+            string left = controller.DecodeBase64String("AAAAAA==");
+            string right = controller.DecodeBase64String("AAAAAA==");
             DiffData diff = new DiffData
             {
                 Id = 1,
@@ -58,7 +59,6 @@ namespace DiffUnitTests
             };
 
             // Actual result
-            DiffController controller = new DiffController();
             DiffResponse actual = controller.Diffing(diff);
 
             // Assert
@@ -70,8 +70,9 @@ namespace DiffUnitTests
         public void Diffing_DifferentStrings()
         {
             // Testing data
-            string left = "AAAAAA==";
-            string right = "AQABAQ==";
+            DiffController controller = new DiffController();
+            string left = controller.DecodeBase64String("AAAAAA==");
+            string right = controller.DecodeBase64String("AQABAQ==");
             DiffData diff = new DiffData
             {
                 Id = 1,
@@ -80,22 +81,19 @@ namespace DiffUnitTests
             };
 
             // Expected result
-            List<Diff> diffs = new List<Diff>();
-            diffs.Add(new Diff
+            List<Diff> diffs = new List<Diff>
             {
-                Offset = 1,
-                Length = 1
-            });
-            diffs.Add(new Diff
-            {
-                Offset = 3,
-                Length = 1
-            });
-            diffs.Add(new Diff
-            {
-                Offset = 5,
-                Length = 1
-            });
+                new Diff
+                {
+                    Offset = 0,
+                    Length = 1
+                },
+                new Diff
+                {
+                    Offset = 2,
+                    Length = 2
+                }
+            };
 
             DiffResponse expected = new DiffResponse
             {
@@ -104,7 +102,6 @@ namespace DiffUnitTests
             };
 
             // Actual result
-            DiffController controller = new DiffController();
             DiffResponse actual = controller.Diffing(diff);
 
             // Assert
@@ -112,6 +109,7 @@ namespace DiffUnitTests
             Assert.AreEqual(expected.Diffs.Count, actual.Diffs.Count);
 
             int length = expected.Diffs.Count;
+
             for (int i = 0; i < length; i++)
             {
                 Assert.AreEqual(expected.Diffs[i].Length, actual.Diffs[i].Length);

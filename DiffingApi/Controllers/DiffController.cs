@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Net;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using DiffingApi.Models;
 using DiffingApi.Services;
@@ -29,7 +30,7 @@ namespace DiffingApi.Controllers
         [HttpGet]
         public string Get()
         {
-            return "Diffing API";
+            return "Diffing Api";
         }
 
         // GET v1/<DiffController>/5
@@ -73,11 +74,17 @@ namespace DiffingApi.Controllers
 
             try
             {
+                string decodedData = DecodeBase64String(data.Data);
+                data.Data = decodedData;
                 diffService.AddLeftData(id, data);
                 return Created(HttpStatusCode.Created.ToString(), null);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                if (ex is System.FormatException)
+                {
+                    return BadRequest();
+                }
                 throw;
             }
         }
@@ -94,11 +101,17 @@ namespace DiffingApi.Controllers
 
             try
             {
+                string decodedData = DecodeBase64String(data.Data);
+                data.Data = decodedData;
                 diffService.AddRightData(id, data);
                 return Created(HttpStatusCode.Created.ToString(), null);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                if (ex is System.FormatException)
+                {
+                    return BadRequest();
+                }
                 throw;
             }
         }
@@ -106,13 +119,30 @@ namespace DiffingApi.Controllers
 
 
         #region Custom functions
-        //Function for diff-ing data
+        // Function that decodes base64 string
+        public string DecodeBase64String (string encodedString)
+        {
+            string converted = Encoding.UTF8.GetString(Convert.FromBase64String(encodedString));
+            StringBuilder stringBuilder = new StringBuilder();
+
+            foreach (char c in converted)
+            {
+                stringBuilder.Append(((int)c).ToString("x"));
+            }
+
+            string decodedString = stringBuilder.ToString();
+            return decodedString;
+        }
+
+        // Function for diff-ing data
         public DiffResponse Diffing(DiffData diff)
         {
             DiffResponse response = new DiffResponse();
             List<Diff> diffs = new List<Diff>();
-            int leftLen = diff.LeftData.Length;
-            int rightLen = diff.RightData.Length;
+            string leftDiff = diff.LeftData;
+            string rightDiff = diff.RightData;
+            int leftLen = leftDiff.Length;
+            int rightLen = rightDiff.Length;
 
             // If the strings aren't of the same length we aren't interested in differences
             // so we first compare their lengths
@@ -129,7 +159,7 @@ namespace DiffingApi.Controllers
 
                 for (int i = 0; i < leftLen; i++)
                 {
-                    if (diff.LeftData[i] != diff.RightData[i])
+                    if (leftDiff[i] != rightDiff[i])
                     {
                         // If previous chars of both strings were equal this diff represents a start of a new different substring
                         if (lastDiff != i-1)

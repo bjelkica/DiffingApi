@@ -24,6 +24,7 @@ namespace DiffIntegrationTests
         }
 
         [Fact]
+        // Test sending data to the left endpoint
         public async Task TestPutLeftData()
         {
             // Arrange
@@ -32,7 +33,7 @@ namespace DiffIntegrationTests
                 Url = "v1/diff/1/left",
                 Body = new
                 {
-                    data = "AAAAAA"
+                    data = "AAAAAA=="
                 }
             };
 
@@ -45,6 +46,7 @@ namespace DiffIntegrationTests
         }
 
         [Fact]
+        // Test sending data to the right endpoint
         public async Task TestPutRightData()
         {
             // Arrange
@@ -53,7 +55,7 @@ namespace DiffIntegrationTests
                 Url = "v1/diff/1/right",
                 Body = new
                 {
-                    data = "AABBAAC"
+                    data = "AQABAQ=="
                 }
             };
 
@@ -66,7 +68,7 @@ namespace DiffIntegrationTests
         }
 
         [Fact]
-        // For this test to work properly there already must be data at the left and right endpoints with id 1 before testing
+        // Test getting data by given id
         public async Task TestGetDiff()
         {
             // Arrange
@@ -80,6 +82,7 @@ namespace DiffIntegrationTests
         }
 
         [Fact]
+        // There should not be any data with id 3 in a database for this test to work properly
         public async Task TestGetEmptyDiff()
         {
             // Arrange
@@ -107,7 +110,7 @@ namespace DiffIntegrationTests
                 Url = "v1/diff/2/left",
                 Body = new
                 {
-                    data = "AAAAAA"
+                    data = "AQABAQ=="
                 }
             };
             StringContent leftContent = new StringContent(JsonConvert.SerializeObject(requestLeft.Body), Encoding.Default, "application/json");
