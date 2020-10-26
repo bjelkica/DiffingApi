@@ -42,7 +42,7 @@ namespace DiffingApi.Services
                         context.SaveChanges();
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
             }
@@ -72,7 +72,7 @@ namespace DiffingApi.Services
                         context.SaveChanges();
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
             }

@@ -66,6 +66,7 @@ namespace DiffIntegrationTests
         }
 
         [Fact]
+        // For this test to work properly there already must be data at the left and right endpoints with id 1 before testing
         public async Task TestGetDiff()
         {
             // Arrange
@@ -94,6 +95,8 @@ namespace DiffIntegrationTests
         }
 
         [Fact]
+        // For this test to work properly there already must be data at the left endpoint
+        // with id 2 before testing (right endpoint data must be empty)
         public async Task TestGetDiffWithLeftData()
         {
             // Arrange

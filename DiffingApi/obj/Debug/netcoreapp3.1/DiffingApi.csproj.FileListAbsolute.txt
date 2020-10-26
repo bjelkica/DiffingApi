@@ -55,8 +55,9 @@ C:\Users\shomy\source\repos\DiffingApi\DiffingApi\bin\Debug\netcoreapp3.1\Diffin
 C:\Users\shomy\source\repos\DiffingApi\DiffingApi\bin\Debug\netcoreapp3.1\DiffingApi.dll
 C:\Users\shomy\source\repos\DiffingApi\DiffingApi\bin\Debug\netcoreapp3.1\DiffingApi.pdb
 C:\Users\shomy\source\repos\DiffingApi\DiffingApi\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\shomy\source\repos\DiffingApi\DiffingApi\obj\Debug\netcoreapp3.1\DiffingApi.csproj.CoreCompileInputs.cache
-C:\Users\shomy\source\repos\DiffingApi\DiffingApi\obj\Debug\netcoreapp3.1\DiffingApi.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\shomy\source\repos\DiffingApi\DiffingApi\obj\Debug\netcoreapp3.1\DiffingApi.dll
 C:\Users\shomy\source\repos\DiffingApi\DiffingApi\obj\Debug\netcoreapp3.1\DiffingApi.pdb
 C:\Users\shomy\source\repos\DiffingApi\DiffingApi\obj\Debug\netcoreapp3.1\DiffingApi.genruntimeconfig.cache
+C:\Users\shomy\source\repos\DiffingApi\DiffingApi\obj\Debug\netcoreapp3.1\DiffingApi.csprojAssemblyReference.cache
+C:\Users\shomy\source\repos\DiffingApi\DiffingApi\obj\Debug\netcoreapp3.1\DiffingApi.csproj.CoreCompileInputs.cache
+C:\Users\shomy\source\repos\DiffingApi\DiffingApi\obj\Debug\netcoreapp3.1\DiffingApi.MvcApplicationPartsAssemblyInfo.cache

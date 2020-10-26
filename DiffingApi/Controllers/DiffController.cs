@@ -27,9 +27,9 @@ namespace DiffingApi.Controllers
 
         // GET: v1/<DiffController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public string Get()
         {
-            return new string[] { "value1", "value2" };
+            return "Diffing API";
         }
 
         // GET v1/<DiffController>/5
@@ -105,8 +105,8 @@ namespace DiffingApi.Controllers
 
 
 
-
-        //Custom functions
+        #region Custom functions
+        //Function for diff-ing data
         public DiffResponse Diffing(DiffData diff)
         {
             DiffResponse response = new DiffResponse();
@@ -161,8 +161,8 @@ namespace DiffingApi.Controllers
                     response.Diffs = diffs;
                 }
             }
-
             return response;
         }
+        #endregion
     }
 }
