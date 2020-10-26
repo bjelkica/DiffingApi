@@ -95,13 +95,23 @@ namespace DiffIntegrationTests
         }
 
         [Fact]
-        // For this test to work properly there already must be data at the left endpoint
-        // with id 2 before testing (right endpoint data must be empty)
+        // We test get method for a case where there is only data at the left endpoint for an id 2
         public async Task TestGetDiffWithLeftData()
         {
             // Arrange
             var requestUrl = "v1/diff/2";
             string expected = "NotFound";
+            // We put a data to the left endpoint with id 2 for a case it wasn't created before
+            var requestLeft = new
+            {
+                Url = "v1/diff/2/left",
+                Body = new
+                {
+                    data = "AAAAAA"
+                }
+            };
+            StringContent leftContent = new StringContent(JsonConvert.SerializeObject(requestLeft.Body), Encoding.Default, "application/json");
+            var leftResponse = await _client.PutAsync(requestLeft.Url, leftContent);
 
             // Act
             var response = await _client.GetAsync(requestUrl);
