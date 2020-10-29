@@ -1,3 +1,4 @@
+using DiffingApi.BusinessLogic;
 using DiffingApi.Controllers;
 using DiffingApi.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -12,9 +13,8 @@ namespace DiffUnitTests
         public void Diffing_StringsOfDifferentSize()
         {
             // Testing data
-            DiffController controller = new DiffController();
-            string left = controller.DecodeBase64String("AAAAAA==");
-            string right = controller.DecodeBase64String("AAA=");
+            string left = Base64String.DecodeBase64String("AAAAAA==");
+            string right = Base64String.DecodeBase64String("AAA=");
             DiffData diff = new DiffData
             {
                 Id = 1,
@@ -30,7 +30,8 @@ namespace DiffUnitTests
             };
 
             // Actual result
-            DiffResponse actual = controller.Diffing(diff);
+            DiffLogic logic = new DiffLogic();
+            DiffResponse actual = logic.Diffing(diff);
 
             // Assert
             Assert.AreEqual(expected.DiffResultType, actual.DiffResultType);
@@ -41,9 +42,8 @@ namespace DiffUnitTests
         public void Diffing_EqualStrings()
         {
             // Testing data
-            DiffController controller = new DiffController();
-            string left = controller.DecodeBase64String("AAAAAA==");
-            string right = controller.DecodeBase64String("AAAAAA==");
+            string left = Base64String.DecodeBase64String("AAAAAA==");
+            string right = Base64String.DecodeBase64String("AAAAAA==");
             DiffData diff = new DiffData
             {
                 Id = 1,
@@ -59,7 +59,8 @@ namespace DiffUnitTests
             };
 
             // Actual result
-            DiffResponse actual = controller.Diffing(diff);
+            DiffLogic logic = new DiffLogic();
+            DiffResponse actual = logic.Diffing(diff);
 
             // Assert
             Assert.AreEqual(expected.DiffResultType, actual.DiffResultType);
@@ -70,9 +71,8 @@ namespace DiffUnitTests
         public void Diffing_DifferentStrings()
         {
             // Testing data
-            DiffController controller = new DiffController();
-            string left = controller.DecodeBase64String("AAAAAA==");
-            string right = controller.DecodeBase64String("AQABAQ==");
+            string left = Base64String.DecodeBase64String("AAAAAA==");
+            string right = Base64String.DecodeBase64String("AQABAQ==");
             DiffData diff = new DiffData
             {
                 Id = 1,
@@ -102,7 +102,8 @@ namespace DiffUnitTests
             };
 
             // Actual result
-            DiffResponse actual = controller.Diffing(diff);
+            DiffLogic logic = new DiffLogic();
+            DiffResponse actual = logic.Diffing(diff);
 
             // Assert
             Assert.AreEqual(expected.DiffResultType, actual.DiffResultType);
