@@ -1,5 +1,5 @@
 # DiffingApi
-DiffingApi is a Web API for comparing two strings. If the strings don't have the same length or if they are equal then an app returns that. Otherwise if the strings are of 
+DiffingApi is a Web API for comparing two base64 encoded strings. If the strings don't have the same length or if they are equal then an app returns that. Otherwise if the strings are of 
 a same length but are not equal then the app finds differences and returns their offsets and lengths.
 
 ## Preparation
